@@ -16,6 +16,7 @@
         android:gravity="center"
         />
     <Button
+        android:id="@+id/BUTTON"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="ALL ON/OFF"
