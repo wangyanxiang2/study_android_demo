@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
+import com.user.hardcontrol.*;
 public class MainActivity extends AppCompatActivity {
 
     private boolean ledon = false;
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     {
         @Override
         public void onClick(View view) {
+
+            HardControl hardControl = new HardControl();
             ledon =!ledon;
             if(ledon) {
                 button.setText("已经全部点亮");
