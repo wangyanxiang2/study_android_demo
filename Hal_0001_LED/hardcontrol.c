@@ -1,7 +1,7 @@
 
 #include <jni.h>  /* /usr/lib/jvm/java-1.7.0-openjdk-amd64/include/ */
 #include <stdio.h>
-
+#include <android/log.h>  /* liblog */ //__android_log_print(ANDROID_LOG_DEBUG, "JNIDemo", "native add ...");
 #if 0
 typedef struct {
     char *name;          /* Java里调用的函数名 */
@@ -12,17 +12,19 @@ typedef struct {
 
 jint ledOpen(JNIEnv *env, jobject cls)
 {
-      return 0;
+	__android_log_print(ANDROID_LOG_DEBUG, "study_android_demo", "native ledOpen");
+	return 0;
 }
 
 void ledClose(JNIEnv *env, jobject cls)
 {
-     
+	__android_log_print(ANDROID_LOG_DEBUG, "study_android_demo", "native ledClose"); 
 }
 
 jint ledCtrl(JNIEnv *env, jobject cls, jint which, jint status)
 {
-       return 0;
+	__android_log_print(ANDROID_LOG_DEBUG, "study_android_demo", "native ledCtrl %d %d",which,status); 
+	return 0;
 }
 
 static const JNINativeMethod methods[] = {

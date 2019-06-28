@@ -20,17 +20,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            HardControl hardControl = new HardControl();
             ledon =!ledon;
             if(ledon) {
                 button.setText("已经全部点亮");
                 checkBoxLed1.setChecked(true);
                 checkBoxLed2.setChecked(true);
+                HardControl.ledCtrl(0,1);
+                HardControl.ledCtrl(1,1);
             }
             else{
                 button.setText("已经全部熄灭");
                 checkBoxLed1.setChecked(false);
                 checkBoxLed2.setChecked(false);
+                HardControl.ledCtrl(0,0);
+                HardControl.ledCtrl(1,0);
             }
         }
     }
@@ -42,17 +45,21 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.LED1:
                 if (checked){
+                    HardControl.ledCtrl(0,1);
                     Toast.makeText(getApplicationContext(),"LED1 已点亮",Toast.LENGTH_LONG).show();
                 }
                 else{
+                    HardControl.ledCtrl(0,0);
                     Toast.makeText(getApplicationContext(),"LED1 已熄灭",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.LED2:
                 if (checked){
+                    HardControl.ledCtrl(1,1);
                     Toast.makeText(getApplicationContext(),"LED2 已点亮",Toast.LENGTH_LONG).show();
                 }
                 else{
+                    HardControl.ledCtrl(1,0);
                     Toast.makeText(getApplicationContext(),"LED2 已熄灭",Toast.LENGTH_LONG).show();
                 }
                 break;
@@ -65,9 +72,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = (Button) findViewById(R.id.BUTTON);
+
+        HardControl.ledOpen();
         checkBoxLed1 = (CheckBox)  findViewById(R.id.LED1);
         checkBoxLed2 = (CheckBox)  findViewById(R.id.LED2);
 
         button.setOnClickListener(new myButtonListener());
+
+
     }
 }
