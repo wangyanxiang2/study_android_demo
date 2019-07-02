@@ -1,0 +1,19 @@
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index 78948472..7375567a 100755
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -69,9 +69,10 @@ obj-$(CONFIG_5V_EN)	+= 5v_en.o
+ obj-y			+= lt8912.o
+ obj-$(CONFIG_LT8911) += lt8911.o
+ obj-$(CONFIG_XGPIO)	+= xgpio.o
+-obj-y			+= x3288-scanner.o
++#obj-y			+= x3288-scanner.o
+ obj-y			+= x3288-printer.o
+-obj-y			+= x3288-pwrctl.o
++#obj-y			+= x3288-pwrctl.o
+ obj-y			+= core12v_en.o
+-obj-y			+= led-ctl.o
+-obj-y                   += i2c_backlight.o
++#obj-y			+= led-ctl.o
++obj-y			+= leds.o
++obj-y           += i2c_backlight.o
