@@ -1,0 +1,53 @@
+diff --git a/arch/arm/boot/dts/x3288.dts b/arch/arm/boot/dts/x3288.dts
+index b60424b1..0220de6c 100755
+--- a/arch/arm/boot/dts/x3288.dts
++++ b/arch/arm/boot/dts/x3288.dts
+@@ -157,7 +157,7 @@
+ 		rockchip,usb_irq_wakeup;
+ 	};
+ 
+-	cash_box{
++	/*cash_box{
+ 		compatible = "x3288-cashbox";
+ 
+         hics,no-auto-alloc-device-num;
+@@ -166,6 +166,11 @@
+ 		ctrl1-gpio = <&gpio4 GPIO_D0 GPIO_ACTIVE_HIGH>;
+ 		ctrl2-gpio = <&gpio4 GPIO_D1 GPIO_ACTIVE_HIGH>;
+ 		state-gpio = <&gpio4 GPIO_C7 GPIO_ACTIVE_HIGH>;
++	};*/
++		led{
++		compatible = "hisense,led";
++		ledRed-pwr = <&gpio4 24 GPIO_ACTIVE_HIGH>;
++		ledGreenBlue-pwr = <&gpio4 25 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	12V_EN {
+diff --git a/arch/arm/configs/x3288_defconfig b/arch/arm/configs/x3288_defconfig
+index 5b3c536c..2907ab46 100755
+--- a/arch/arm/configs/x3288_defconfig
++++ b/arch/arm/configs/x3288_defconfig
+@@ -336,7 +336,7 @@ CONFIG_BLOCK_RKNAND=y
+ # CONFIG_RK_FPGA is not set
+ CONFIG_DVFS=y
+ # CONFIG_RK_PM_TESTS is not set
+-# CONFIG_DDR_TEST is not set
++CONFIG_DDR_TEST=y
+ CONFIG_RK_VCODEC=y
+ # CONFIG_RK_PL330_DMA_TEST is not set
+ # CONFIG_ARCH_SOCFPGA is not set
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+old mode 100644
+new mode 100755
+index 0fe86b88..d8713f6f
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -56,7 +56,7 @@ obj-$(CONFIG_LATTICE_ECP3_CONFIG)	+= lattice-ecp3-config.o
+ obj-y += inv_mpu/
+ obj-$(CONFIG_SRAM)		+= sram.o
+ obj-$(CONFIG_UID_CPUTIME) += uid_cputime.o
+-
++obj-$(CONFIG_5V_EN)	+= leds.o
+ obj-$(CONFIG_5V_EN)	+= 5v_en.o
+ obj-y			+= lt8912.o
+ obj-$(CONFIG_XGPIO)	+= xgpio.o
